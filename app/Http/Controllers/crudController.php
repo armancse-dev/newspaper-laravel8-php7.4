@@ -24,6 +24,10 @@ class crudController extends Controller
             $data['image'] = $this->uploadimage($tbl,$data['image']);
         }
 
+        if(Request::has('category_id')){
+            $data['category_id'] = implode(',',$data['category_id']);
+        }
+
         DB::table($tbl)->insert($data);
         session::flash('message', 'Data Insert Successfully');
         return redirect()->back();
@@ -40,6 +44,9 @@ class crudController extends Controller
 
         if(Request::hasFile('image')){
             $data['image'] = $this->uploadimage($tbl,$data['image']);
+        }
+        if(Request::has('category_id')){
+            $data['category_id'] = implode(',',$data['category_id']);
         }
         DB::table($tbl)->where(key($data),reset($data))->update($data) ;
         session::flash('message', 'Data Update Successfully');

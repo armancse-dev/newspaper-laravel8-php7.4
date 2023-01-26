@@ -58,6 +58,12 @@ class adminController extends Controller
     }
 
     public function addPost(){
-        return view ('backend.add-post');
+        $categories = DB::table('categories')->get();
+        return view ('backend.posts.add-post',['categories'=>$categories]);
+    }
+
+    public function allPost(){
+        $posts = DB::table('posts')->paginate(20);
+        return view('backend.posts.all-posts',['posts'=>$posts]);
     }
 }

@@ -39,5 +39,9 @@ Route::get('settings', [adminController::class, 'settings']);
 Route::POST('addsettings', [crudController::class, 'insertData']);
 Route::POST('updatesettings/{id}', [crudController::class, 'updateData']);
 
-//settings
+//post
 Route::get('add-post', [adminController::class, 'addPost']);
+Route::POST('addpost', [crudController::class, 'insertData']);
+
+//all posts
+Route::get('all-posts', [adminController::class, 'allPost']);

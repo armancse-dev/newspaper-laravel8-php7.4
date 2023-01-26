@@ -6,7 +6,7 @@
 		<div class="col-sm-12 title">
 			<h1><i class="fa fa-bars"></i> Categories</h1>
 		</div>
-		
+
 		<div class="col-sm-4 cat-form">
 			@if (Session::has('message'))
 			<div class="alert alert-success alert-disable fade in">
@@ -40,7 +40,7 @@
 				<div class="form-group">
 					<button class="btn btn-primary">Add New Category</button>
 				</div>
-			</form>	
+			</form>
 
 
 		</div>
@@ -48,7 +48,7 @@
 		<div class="col-sm-8 cat-view">
 			<form method="post" action="{{url('multipledelete')}}" >
 				<div class="row">
-				
+
 					{{csrf_field()}}
 					<input type="hidden" name="tbl" value="{{encrypt('categories')}}">
 					<input type="hidden" name="tblid" value="{{encrypt('cid')}}">
@@ -63,8 +63,8 @@
 					</div>
 					<div class="col-sm-3 col-sm-offset-4">
 						<input type="text" id="search" class="form-control" placeholder="Search Category">
-					</div>	
-				
+					</div>
+
 				</div>
 				<div class="content">
 					<table class="table table-striped">
@@ -80,7 +80,7 @@
 							@foreach ($data as $category)
 							<tr>
 								<td>
-									<input type="checkbox" name="select-data[]" value="{{$category->cid}}"> 
+									<input type="checkbox" name="select-data[]" value="{{$category->cid}}">
 									<a href="{{url('editcategory')}}/{{$category->cid}}">{{$category->title}}</a>
 								</td>
 								<td>{{$category->slug}}</td>
