@@ -64,6 +64,25 @@ class adminController extends Controller
 
     public function allPost(){
         $posts = DB::table('posts')->paginate(20);
+        foreach($posts as $post){
+            $categories = explode(',',$post->category_id);
+            foreach($categories as $cat){
+                $postcat = DB::table('categories')->where('cid',$cat)->value('title');
+                $postcategories[] = $postcat;
+                $postcat = implode(', ', $postcategories);
+            }
+            $post->category_id = $postcat;
+            $postcategories = [];
+        }
+
         return view('backend.posts.all-posts',['posts'=>$posts]);
+    }
+
+    public function editPost($id){
+        $data = DB::table('posts')->where('pid', $id)->first();
+        $postcat = explode(',',$data->category_id);
+        $categories = DB::table('categories')->get();
+        return view('backend.posts.edit', ['data'=>$data, 'categories'=> $categories, 'postcat'=>$postcat]);
+
     }
 }
