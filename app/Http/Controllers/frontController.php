@@ -26,7 +26,11 @@ class frontController extends Controller
         ]);
     }
     public function index(){
-        return view ('frontend.index');
+        $featured = DB::table('posts')->where('category_id', 'LIKE', '%9%')->orderby('pid', 'DESC')->get();
+
+        $general = DB::table('posts')->where('category_id', 'LIKE', '%10%')->orderby('pid', 'DESC')->get();
+
+        return view ('frontend.index', ['featured'=>$featured,'general'=>$general]);
     }
     public function category(){
         return view ('frontend.category');

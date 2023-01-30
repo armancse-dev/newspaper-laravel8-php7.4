@@ -59,8 +59,6 @@
                     @foreach ($categories as $cat)
                     <li><a href="{{url('category')}}/{{$cat->slug}}" class="text-uppercase">{{$cat->title}}</a></li>
                     @endforeach
-
-
         		</ul>
 			</div>
 		</nav>

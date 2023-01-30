@@ -2,40 +2,61 @@
 @section('content')
 
 <div class="wrapper">
-	<div class="row">
-		<div class="col-md-6">
-    		<a href="#"><img src="{{url('public/images/fireman-100722_1280-800x445.jpg')}}" width="100%" /></a>
-            <span class="caption">Lorem ipsum dolor sit amet</span>
+    @if (count($featured) > 0)
+    <div class="row">
+        @foreach ($featured as $key=>$f)
+        @if ($key == 0)
+        <div class="col-md-6">
+            <div class="relative">
+                <a href="{{url('article')}}/{{$f->slug}}">
+                    <img src="{{url('public/posts')}}/{{$f->image}}" width="100%" />
+                    <span class="caption">{{$f->title}}</span>
+                </a>
+            </div>
+
     	</div>
+        @endif
+        @endforeach
     	<div class="col-md-6">
     		<div class="row">
+                @foreach ($featured as $key=>$f)
+                @if ($key > 0 && $key < 3)
         		<div class="col-md-6">
-        	    	<a href="#"><img src="{{url('public/images/bride-301814_1280-392x272.jpg')}}" width="100%" height="162" /></a>
-		            <span class="caption">Lorem ipsum dolor sit amet</span>
+        	    	<div class="relative">
+                        <a href="{{url('article')}}/{{$f->slug}}">
+                            <img src="{{url('public/posts')}}/{{$f->image}}" width="100%" />
+                            <span class="caption">{{$f->title}}</span>
+                        </a>
+                    </div>
         	    </div>
-        	    <div class="col-md-6">
-        	    	<a href="#"><img src="{{url('public/images/sea-418742_1920-392x272.jpg')}}" width="100%" height="162" /></a>
-		            <span class="caption">Lorem ipsum dolor sit amet</span>
-        	    </div>
+                @endif
+                @endforeach
         	</div>
         	<div class="row" style="margin-top:30px;">
+                @foreach ($featured as $key=>$f)
+                @if ($key > 3 && $key < 6)
         		<div class="col-md-6">
-        	    	<a href="#"><img src="{{url('public/images/kayaking-569282_1280-392x272.jpg')}}" width="100%" height="162" /></a>
-		            <span class="caption">Lorem ipsum dolor sit amet</span>
+        	    	<div class="relative">
+                        <a href="{{url('article')}}/{{$f->slug}}">
+                            <img src="{{url('public/posts')}}/{{$f->image}}" width="100%" />
+                            <span class="caption">{{$f->title}}</span>
+                        </a>
+                    </div>
         	    </div>
-        	    <div class="col-md-6">
-        	    	<a href="#"><img src="{{url('public/images/clouds-sky-stadium-4516-392x272.jpg')}}" width="100%" height="162" /></a>
-                    <span class="caption">Lorem ipsum dolor sit amet</span>
-        	    </div>
-        	</div>        
+                @endif
+                @endforeach
+
+        	</div>
     	</div>
 	</div>
-    
+    @endif
+
+
     <div class="row" style="margin-top:30px;">
     	<div class="col-md-8">
         <div class="col-md-12" style="border:1px solid #ccc; padding:15px 15px 30px 0px;">
         	<div class="col-md-12">
-        		<h3 style="border-bottom:3px solid #81d742; padding-bottom:5px;"><span style="padding:6px 12px; background:#81d742;">HEALTH</span></h3>
+        		<h3 style="border-bottom:3px solid #81d742; padding-bottom:5px;"><span style="padding:6px 12px; background:#81d742;">News</span></h3>
         	</div>
         	<div class="col-md-6">
             	<img src="{{url('public/images/coffee-563797_1280-390x205.jpg')}}" width="100%" style="margin-bottom:15px;" />
@@ -101,10 +122,10 @@
                 			<h4>Lorem ipsum dolor sit amet</h4>
                 		</div>
                     </div>
-                </div>    
+                </div>
             </div>
         </div>
-        
+
 	        <div class="col-md-12 image-gallery" style="border:1px solid #ccc; padding:15px 15px 30px 15px; margin-top:30px; margin-bottom:30px;">
     	    	<h3 style="border-bottom:3px solid #81d742; padding-bottom:5px;"><span style="padding:6px 12px; background:#81d742;">HEALTH</span></h3>
         	    <img src="{{url('public/images/basketball-95607_1280-392x272.jpg')}}" />
@@ -113,7 +134,7 @@
 				<img src="{{url('public/images/football-622873_1280-300x205.jpg')}}" />
 				<img src="{{url('public/images/headphones-15600_1280-392x272.jpg')}}" />
 	        </div>
-        
+
         <div class="row">
         	<div class="col-md-6">
             <div class="col-md-12" style="border:1px solid #ccc; padding-bottom:30px;">
@@ -227,7 +248,7 @@
                     </div>
                 </div>
             </div></div>
-        
+
         <div class="col-md-12">
         	<div class="col-md-12" style="border:1px solid #ccc; padding:15px 15px 30px 0px; margin-top:30px;">
 			<div class="col-md-12">
@@ -285,11 +306,11 @@
                 			<h4>Lorem ipsum dolor sit amet</h4>
                 		</div>
                     </div>
-                </div>    
+                </div>
             </div>
         </div>
 		</div>
-        
+
         <div class="col-md-12 image-gallery">
 	        <div class="col-md-12" style="border:1px solid #ccc; padding:15px 15px 30px 15px; margin-top:30px;">
     	    	<h3 style="border-bottom:3px solid #81d742; padding-bottom:5px;"><span style="padding:6px 12px; background:#81d742;">HEALTH</span></h3>
@@ -300,7 +321,7 @@
 				<img src="{{url('public/images/headphones-15600_1280-392x272.jpg')}}" />
 	        </div>
         </div>
-        
+
         <div class="col-md-12">
         <div class="col-md-12" style="border:1px solid #ccc; padding:15px 15px 30px 15px; margin-top:30px;">
         	<h3 style="border-bottom:3px solid #81d742; padding-bottom:5px;"><span style="padding:6px 12px; background:#81d742;">HEALTH</span></h3>
@@ -432,9 +453,9 @@
             </div>
             <div class="col-md-12 text-center" style="padding:30px 0px;">
             	<img src="{{url('public/images/add.jpg')}}" width="80%" />
-            </div>    
+            </div>
           </div>
-          
+
           <div class="col-md-12" style="border:1px solid #ccc; padding:15px 15px 60px 15px; margin-top:30px;">
           	<div class="col-md-12" style="border-bottom:1px solid #ccc; padding:0px 10px 20px 10px; margin-bottom:10px;">
            		<h3 style="border-bottom:3px solid #2b99ca; padding-bottom:5px;"><span style="padding:6px 12px; background:#2b99ca;">MORE NEWS</span></h3>
@@ -466,11 +487,11 @@
                     </div>
                 </div>
           </div>
-          
+
           <div class="col-md-12" style="border:1px solid #ccc; padding:15px 15px 30px 15px; margin-top:30px;">
           	<div class="col-md-12">
             	<h3 style="border-bottom:3px solid #2b99ca; padding-bottom:5px;"><span style="padding:6px 12px; background:#2b99ca;">MORE NEWS</span></h3>
-            </div>          	
+            </div>
           	<div class="col-md-6">
             	<img src="{{url('public/images/add1.jpg')}}" width="100%" />
             </div>
@@ -478,7 +499,7 @@
             	<img src="{{url('public/images/add1.jpg')}}" width="100%" />
             </div>
           </div>
-          
+
          <div class="col-md-12" style="border:1px solid #ccc; padding:15px 15px 7px 15px; margin-top:30px;">
           	<div class="col-md-12" style="border-bottom:1px solid #ccc; padding:0px 10px 20px 10px; margin-bottom:10px;">
             <h3 style="border-bottom:3px solid #2b99ca; padding-bottom:5px;"><span style="padding:6px 12px; background:#2b99ca;">MORE NEWS</span></h3>
@@ -545,10 +566,10 @@
                 		</div>
                     </div>
                 </div>
-          </div> 
-          
+          </div>
+
         </div>
-    </div> 
+    </div>
 </div>
 
 @stop
