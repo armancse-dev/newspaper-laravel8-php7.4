@@ -21,8 +21,9 @@
                     <input type="hidden" name="tbl" value="{{encrypt('posts')}}" >
 					<div class="col-sm-9">
 						<div class="form-group">
-							<input type="text" name="title" class="form-control" id="post_title"
-							placeholder="Enter title here">
+
+                            <input type="text" name="title" id="post_title" class="form-control" placeholder="Enter title here">
+
 						</div>
 						<div class="form-group">
 							<input type="text" name="slug" id="slug" class="form-control"

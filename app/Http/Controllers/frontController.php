@@ -30,7 +30,9 @@ class frontController extends Controller
 
         $general = DB::table('posts')->where('category_id', 'LIKE', '%10%')->orderby('pid', 'DESC')->get();
 
-        return view ('frontend.index', ['featured'=>$featured,'general'=>$general]);
+        $business = DB::table('posts')->where('category_id', 'LIKE', '%2%')->orderby('pid', 'DESC')->get();
+
+        return view ('frontend.index', ['featured'=>$featured,'general'=>$general,'business'=>$business]);
     }
     public function category(){
         return view ('frontend.category');
