@@ -32,12 +32,28 @@ class frontController extends Controller
 
         $business = DB::table('posts')->where('category_id', 'LIKE', '%2%')->orderby('pid', 'DESC')->get();
 
-        return view ('frontend.index', ['featured'=>$featured,'general'=>$general,'business'=>$business]);
+        $sports = DB::table('posts')->where('category_id', 'LIKE', '%5%')->orderby('pid', 'DESC')->get();
+        $technology = DB::table('posts')->where('category_id', 'LIKE', '%4%')->orderby('pid', 'DESC')->get();
+        $health = DB::table('posts')->where('category_id', 'LIKE', '%8%')->orderby('pid', 'DESC')->get();
+        $travel = DB::table('posts')->where('category_id', 'LIKE', '%6%')->orderby('pid', 'DESC')->get();
+
+        $entertainment = DB::table('posts')->where('category_id', 'LIKE', '%3%')->orderby('pid', 'DESC')->get();
+        $politics = DB::table('posts')->where('category_id', 'LIKE', '%1%')->orderby('pid', 'DESC')->get();
+        $style = DB::table('posts')->where('category_id', 'LIKE', '%7%')->orderby('pid', 'DESC')->get();
+
+        return view ('frontend.index', ['featured'=>$featured,'general'=>$general,'business'=>$business,'sports'=>$sports,'technology'=>$technology,'health'=>$health,'travel'=>$travel,'entertainment'=>$entertainment,'politics'=>$politics,'style'=>$style]);
     }
-    public function category(){
-        return view ('frontend.category');
+    public function category($slug){
+        $cat = DB::table('categories')->where('slug',$slug)->first();
+        $posts = DB::table('posts')->where('category_id','LIKE','%'.$cat->cid.'%')->get();
+        return view ('frontend.category',['posts'=>$posts,'cat'=>$cat]);
     }
-    public function post(){
-        return view ('frontend.article');
+    public function article($slug){
+        $data = DB::table('posts')->where('slug',$slug)->first();
+        $category = explode(',',$data->category_id);
+        $category = $category[0];
+        $related = DB::table('posts')->where('category_id','LIKE', '%'.$category.'%')->get();
+        $letest = DB:: table('posts')->where('status','publish')->orderby('pid','DESC')->get();
+        return view ('frontend.article',['data'=>$data, 'related'=>$related,'letest'=>$letest]);
     }
 }

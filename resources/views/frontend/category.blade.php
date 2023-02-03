@@ -7,7 +7,7 @@
 			<div class="col-md-8">
 				<div class="col-md-12" style="padding:15px 15px 30px 0px;">
 					<div class="col-md-12">
-						<h3 style="border-bottom:3px solid #81d742; padding-bottom:5px;"><span style="padding:6px 12px; background:#81d742;">HEALTH</span></h3>
+						<h3 style="border-bottom:3px solid #81d742; padding-bottom:5px;"><span style="padding:6px 12px; background:#81d742;text-transform:uppercase">{{$cat->title}}</span></h3>
 					</div>
 					<div class="col-md-12">
 						<img src="{{url('public/images/coffee-563797_1280-390x205.jpg')}}" width="100%" style="margin-bottom:15px;" />
@@ -30,8 +30,8 @@
 							<img src="{{url('public/images/coffee-563797_1280-390x205.jpg')}}" width="100%" style="margin-bottom:15px;" />
 							<p align="justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>Read more <a href="#"><span class="glyphicon glyphicon-chevron-right"></span><span class="glyphicon glyphicon-chevron-right"></span></a>
 						</div>
-					</div>            
-				</div>        
+					</div>
+				</div>
 			</div>
 
 <!-- right section -->
@@ -124,7 +124,7 @@
 					</div>
 					<div class="col-md-12 text-center" style="padding:30px 0px;">
 						<img src="{{url('public/images/add.jpg')}}" width="80%" />
-					</div>    
+					</div>
 				</div>
 
 				<div class="col-md-12" style=" padding:15px 15px 60px 15px; margin-top:30px;">
@@ -162,7 +162,7 @@
 				<div class="col-md-12" style=" padding:15px 15px 30px 15px; margin-top:30px;">
 					<div class="col-md-12">
 						<h3 style="border-bottom:3px solid #2b99ca; padding-bottom:5px;"><span style="padding:6px 12px; background:#2b99ca;">MORE NEWS</span></h3>
-					</div>          	
+					</div>
 					<div class="col-md-6">
 						<img src="{{url('public/images/add1.jpg')}}" width="100%" />
 					</div>
@@ -237,8 +237,8 @@
 							</div>
 						</div>
 					</div>
-				</div> 
+				</div>
 			</div>
-		</div> 
+		</div>
 	</div>
 @stop

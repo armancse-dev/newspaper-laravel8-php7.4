@@ -8,85 +8,97 @@
     @if ($key == 0)
       <div class="col-md-6">
         <div class="relative">
-            <a href="{{url('article')}}/{{$f->slug}}">
-                <img src="{{url('public/posts')}}/{{$f->image}}" width="100%" />
-                <span class="caption">{{$f->title}}</span>
-            </a>
+          <a href="{{url('article')}}/{{$f->slug}}">
+            <img src="{{url('public/posts')}}/{{$f->image}}" width="100%" />
+            <span class="caption">{{$f->title}}</span>
+          </a>
         </div>
     	</div>
     @endif
     @endforeach
 
-    	<div class="col-md-6">
-    		<div class="row">
-                @foreach ($featured as $key=>$f)
-                @if ($key > 0 && $key < 3)
-        		<div class="col-md-6">
-        	    	<div class="relative">
-                        <a href="{{url('article')}}/{{$f->slug}}">
-                            <img src="{{url('public/posts')}}/{{$f->image}}" width="100%" />
-                            <span class="caption">{{$f->title}}</span>
-                        </a>
-                    </div>
-        	    </div>
-                @endif
-                @endforeach
-        	</div>
-        	<div class="row" style="margin-top:30px;">
-                @foreach ($featured as $key=>$f)
-                @if ($key > 3 && $key < 6)
-        		<div class="col-md-6">
-        	    	<div class="relative">
-                        <a href="{{url('article')}}/{{$f->slug}}">
-                            <img src="{{url('public/posts')}}/{{$f->image}}" width="100%" />
-                            <span class="caption">{{$f->title}}</span>
-                        </a>
-                    </div>
-        	    </div>
-                @endif
-                @endforeach
-
+    <div class="col-md-6">
+      <div class="row">
+        @foreach ($featured as $key=>$f)
+          @if ($key > 0 && $key < 3)
+            <div class="col-md-6">
+              <div class="relative">
+                <a href="{{url('article')}}/{{$f->slug}}">
+                  <img src="{{url('public/posts')}}/{{$f->image}}" width="100%" />
+                  <span class="caption">{{$f->title}}</span>
+                </a>
+              </div>
+            </div>
+          @endif
+        @endforeach
+      </div>
+    </div>
+    <div class="row" style="margin-top:30px;">
+      @foreach ($featured as $key=>$f)
+        @if ($key > 3 && $key < 6)
+          <div class="col-md-6">
+            <div class="relative">
+              <a href="{{url('article')}}/{{$f->slug}}">
+                <img src="{{url('public/posts')}}/{{$f->image}}" width="100%" />
+                <span class="caption">{{$f->title}}</span>
+              </a>
+            </div>
+          </div>
+        @endif
+      @endforeach
+    </div>
   </div>
 </div>
 
-	</div>
-    @endif
+</div>
+@endif
 
 
-    <div class="row" style="margin-top:30px;">
-    	<div class="col-md-8">
-        <div class="col-md-12" style="border:1px solid #ccc; padding:15px 15px 30px 0px;">
-        	<div class="col-md-12">
-        		<h3 style="border-bottom:3px solid #81d742; padding-bottom:5px;"><span style="padding:6px 12px; background:#81d742;">News</span></h3>
-        	</div>
-        	<div class="col-md-6">
-                @foreach ($general as $key=>$g)
-                @if ($key == 0)
-                <a href="{{url('article')}}/{{$g->slug}}"><img src="{{url('public/posts')}}/{{$g->image}}" width="100%" style="margin-bottom:15px;" /></a>
-                <h3><a href="{{url('article')}}/{{$g->slug}}">{{$g->title}}</a></h3>
-        		<p align="justify">{!! substr($g->description,0,300)!!}</p>Read more &raquo; <a href="{{url('article')}}/{{$g->slug}}{{$g->title}}"></a>
-                @endif
-                @endforeach
+<div class="row" style="margin-top:30px;">
+  <div class="col-md-8">
+    <div class="col-md-12" style="border:1px solid #ccc; padding:15px 15px 30px 0px;">
+      <div class="col-md-12">
+        <h3 style="border-bottom:3px solid #81d742; padding-bottom:5px;">
+          <span style="padding:6px 12px; background:#81d742;">News</span>
+        </h3>
+      </div>
+      <div class="col-md-6">
+        @foreach ($general as $key=>$g)
+          @if ($key == 0)
+            <a href="{{url('article')}}/{{$g->slug}}">
+              <img src="{{url('public/posts')}}/{{$g->image}}" width="100%" style="margin-bottom:15px;" />
+            </a>
+            <h3>
+              <a href="{{url('article')}}/{{$g->slug}}">{{$g->title}}</a>
+            </h3>
+            <p align="justify">{!! substr($g->description,0,300)!!}</p>
+            Read more &raquo; <a href="{{url('article')}}/{{$g->slug}}{{$g->title}}"></a>
+          @endif
+        @endforeach
+      </div>
+      <div class="col-md-6">
+        @foreach ($general as $key=>$g)
+        @if ($key > 0 && $key < 6)
+        <div class="row" style="border-bottom:1px solid #ccc; padding-bottom:10px; margin-bottom:10px;">
+          <div class="col-md-4">
+            <div class="row">
+              <a href="{{url('article')}}/{{$g->slug}}">
+                <img src="{{url('public/posts')}}/{{$g->image}}" width="100%" />
+              </a>
             </div>
-            <div class="col-md-6">
-                @foreach ($general as $key=>$g)
-                @if ($key > 0 && $key < 6)
-            	<div class="row" style="border-bottom:1px solid #ccc; padding-bottom:10px; margin-bottom:10px;">
-	            	<div class="col-md-4">
-                    	<div class="row">
-    	            		<a href="{{url('article')}}/{{$g->slug}}"><img src="{{url('public/posts')}}/{{$g->image}}" width="100%" /></a>
-        	        	</div>
-                    </div>
-            	    <div class="col-md-8">
-                    	<div class="row">
-                			<h4><a href="{{url('article')}}/{{$g->slug}}">{{$g->title}}</a></h4>
-                		</div>
-                    </div>
-                    @endif
-                    @endforeach
-                </div>
+          </div>
+          <div class="col-md-8">
+            <div class="row">
+              <h4><a href="{{url('article')}}/{{$g->slug}}">{{$g->title}}</a></h4>
             </div>
+          </div>
         </div>
+        @endif
+        @endforeach
+      </div>
+    </div>
+  </div>
+</div>
 
 	        <div class="col-md-12 image-gallery" style="border:1px solid #ccc; padding:15px 15px 30px 15px; margin-top:30px; margin-bottom:30px;">
     	    	<h3 style="border-bottom:3px solid #81d742; padding-bottom:5px;"><span style="padding:6px 12px; background:#81d742;">BUSINESS</span></h3>
@@ -174,7 +186,8 @@
                 @endif
                 @endforeach
 
-            </div></div>
+  </div>
+</div>
 
         <div class="col-md-12">
         	<div class="col-md-12" style="border:1px solid #ccc; padding:15px 15px 30px 0px; margin-top:30px;">
