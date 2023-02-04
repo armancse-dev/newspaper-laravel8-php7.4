@@ -50,3 +50,5 @@ Route::get('all-posts', [adminController::class, 'allPost']);
 Route::get('editpost/{id}', [adminController::class, 'editPost']);
 
 Route::POST('updatepost/{id}', [crudController::class, 'updateData']);
+
+Route::get('search-content', [frontController::class, 'searchContent']);

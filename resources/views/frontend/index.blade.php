@@ -1,4 +1,7 @@
 @extends('frontend.master')
+@section('title')
+<title>{{$f->title}} | WhatsOn</title>
+@stop
 @section('content')
 
 <div class="wrapper">

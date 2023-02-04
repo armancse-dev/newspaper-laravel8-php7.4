@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>COLORMAG - NEWS SITE</title>
+@yield('title');
+<title>WhatsOn &ndash; Your News &amp; Culture guide. - NEWS SITE</title>
 <link href="{{url('public/css/font-awesome.min.css')}}" rel="stylesheet"/>
 <link href="{{url('public/css/bootstrap.min.css')}}" rel="stylesheet"/>
 
@@ -17,7 +18,7 @@
     		<span class="day">{{date('l, M d, Y')}}</span>
         </div>
         <div class="col-md-9">
-        	<span class="latest">Latest: </span> <a href="#">Wireless Headphones are now on Market</a>
+        	<span class="latest">Latest: </span> <a href="{{url('article')}}/{{$lastnews->slug}}">{{$lastnews->title}}</a>
         </div>
     </div>
     <div class="col-md-3 top-social">
@@ -65,9 +66,10 @@
 	</div>
 	<div class="col-md-2">
 		<div class="search">
-			<input type="search" class="form-control" />
+			<input type="search" id="search_content" class="form-control" />
 			<span class="glyphicon glyphicon-search search-btnn">
 			</span>
+            <div id="search-output"></div>
 		</div>
     </div>
 </div>
@@ -141,6 +143,23 @@ Copyright &copy; {{date('Y')}} || WhatsOn | Powered by: <a href="#">Arman</a>
         event.preventDefault();
         $('html').animate({scrollTop: 0}, duration);
         return false;
+    })
+    $('#search_content').keyup(function(){
+        var text = $('#search_content').val();
+        if(text.length < 1){
+            $('#search-output').hide();
+            return false;
+        }else{
+            $.ajax({
+                type : "get",
+                url : "{{url('search-content')}}",
+                data : {text: text},
+                success : function(res){
+                    $('#search-output').show();
+                    $('#search-output').html(res);
+                }
+            })
+        }
     })
     </script>
 

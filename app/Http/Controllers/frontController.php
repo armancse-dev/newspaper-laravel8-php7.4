@@ -15,14 +15,17 @@ class frontController extends Controller
                 $icon= explode('.',$social);
                 $icon = $icon[1];
                 $icons[] =$icon;
+
             }
         }else{
             $icons = [];
         }
+        $lastnews = DB::table('posts')->where('status','publish')->orderby('pid','DESC')->first();
         view()->share([
             'categories' => $categories,
             'setting' => $setting,
             'icons' => $icons,
+            'lastnews' => $lastnews,
         ]);
     }
     public function index(){
@@ -46,7 +49,8 @@ class frontController extends Controller
     public function category($slug){
         $cat = DB::table('categories')->where('slug',$slug)->first();
         $posts = DB::table('posts')->where('category_id','LIKE','%'.$cat->cid.'%')->get();
-        return view ('frontend.category',['posts'=>$posts,'cat'=>$cat]);
+        $letest = DB:: table('posts')->where('status','publish')->orderby('pid','DESC')->get();
+        return view ('frontend.category',['posts'=>$posts,'cat'=>$cat,'letest'=>$letest]);
     }
     public function article($slug){
         $data = DB::table('posts')->where('slug',$slug)->first();
@@ -55,5 +59,25 @@ class frontController extends Controller
         $related = DB::table('posts')->where('category_id','LIKE', '%'.$category.'%')->get();
         $letest = DB:: table('posts')->where('status','publish')->orderby('pid','DESC')->get();
         return view ('frontend.article',['data'=>$data, 'related'=>$related,'letest'=>$letest]);
+    }
+
+    public function searchContent(){
+        $url = 'http://localhost/newspaper/article';
+        $text = $_GET['text'];
+        $data = DB::table('posts')->where('title','LIKE','%'.$text.'%')->orwhere('description','LIKE','%'.$text.'%')->get();
+        $output = '';
+
+        echo '<ul class="search-result">';
+        if(count($data) > 0){
+            foreach($data as $d){
+                echo '<li><a href="'.$url.'/'.$d->slug.'">'.$d->title.'</a></li>';
+            }
+        }
+        else{
+            echo '<li><a>sorry! No data found</a></li>';
+        }
+
+        echo '</ul>';
+        return $output;
     }
 }
