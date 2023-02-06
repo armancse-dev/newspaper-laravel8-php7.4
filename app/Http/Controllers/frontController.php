@@ -54,6 +54,9 @@ class frontController extends Controller
     }
     public function article($slug){
         $data = DB::table('posts')->where('slug',$slug)->first();
+
+        $views = $data->views;
+        DB::table('posts')->where('slug',$slug)->update(['views'=>$views + 1]);
         $category = explode(',',$data->category_id);
         $category = $category[0];
         $related = DB::table('posts')->where('category_id','LIKE', '%'.$category.'%')->get();

@@ -179,7 +179,7 @@ h4{
     left: 0;
     background: rgba(0, 0, 0, 0.7);
 }
-.also-like h3{
+.also-like h3, .view-count h3, .share-this h3{
     color:#000;
 
 }
@@ -209,4 +209,8 @@ a{
 }
 .search-result li:last-child a{
     padding-bottom: 0px;
+}
+.tweet-btn{
+    position: relative;
+    top: 5px;
 }

@@ -53,8 +53,8 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href="#"><i class="fa fa-eye"></i>All Pages</a></li>
-              <li><a href="#"><i class="fa fa-plus-circle"></i>Add Pages</a></li>
+              <li><a href="{{url('all-pages')}}"><i class="fa fa-eye"></i>All Pages</a></li>
+              <li><a href="{{url('add-pages')}}"><i class="fa fa-plus-circle"></i>Add Pages</a></li>
             </ul>
         </li>
         <li class="treeview">

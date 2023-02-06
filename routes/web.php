@@ -18,7 +18,6 @@ use App\Http\Controllers\crudController;
 
 
 Route::get('/', [frontController::class, 'index']);
-
 Route::get('article/{slug}', [frontController::class, 'article']);
 Route::get('category/{id}', [frontController::class, 'category']);
 Route::get('post', [frontController::class, 'post']);
@@ -28,12 +27,9 @@ Route::get('admin', [adminController::class, 'index']);
 
 //category
 Route::get('viewcategory', [adminController::class, 'viewcategory']);
-
 Route::POST('addcategory', [crudController::class, 'insertData']);
-
 Route::get('editcategory/{id}', [adminController::class, 'editCategory']);
 Route::POST('updatecategory/{id}', [crudController::class, 'updateData']);
-
 Route::POST('multipledelete', [adminController::class, 'multipleDelete']);
 
 //settings
@@ -48,7 +44,14 @@ Route::POST('addpost', [crudController::class, 'insertData']);
 //all posts
 Route::get('all-posts', [adminController::class, 'allPost']);
 Route::get('editpost/{id}', [adminController::class, 'editPost']);
-
 Route::POST('updatepost/{id}', [crudController::class, 'updateData']);
-
 Route::get('search-content', [frontController::class, 'searchContent']);
+
+
+//Pages
+Route::get('add-pages', [adminController::class, 'addPage']);
+
+// Route::POST('addpage', [crudController::class, 'insertData']);
+Route::get('all-pages', [adminController::class, 'allPages']);
+Route::get('editpage/{id}', [adminController::class, 'editPage']);
+Route::POST('updatepage/{id}', [crudController::class, 'updateData']);
