@@ -19,8 +19,9 @@ use App\Http\Controllers\crudController;
 
 Route::get('/', [frontController::class, 'index']);
 Route::get('article/{slug}', [frontController::class, 'article']);
-Route::get('category/{id}', [frontController::class, 'category']);
+Route::get('category/{slug}', [frontController::class, 'category']);
 Route::get('post', [frontController::class, 'post']);
+Route::get('page/{slug}', [frontController::class, 'page']);
 
 //admin
 Route::get('admin', [adminController::class, 'index']);
@@ -51,7 +52,7 @@ Route::get('search-content', [frontController::class, 'searchContent']);
 //Pages
 Route::get('add-pages', [adminController::class, 'addPage']);
 
-// Route::POST('addpage', [crudController::class, 'insertData']);
+Route::POST('addpage', [crudController::class, 'insertData']);
 Route::get('all-pages', [adminController::class, 'allPages']);
 Route::get('editpage/{id}', [adminController::class, 'editPage']);
 Route::POST('updatepage/{id}', [crudController::class, 'updateData']);

@@ -19,7 +19,7 @@
 				<form method="post" action="{{url('updatepost')}}/{{$data->pid}}" enctype="multipart/form-data">
 					{{ csrf_field() }}
 					<input type="hidden" name="tbl" value="{{encrypt('posts')}}" >
-					<input type="hidden" name="tbl" value="{{$data->pid}}" >
+					<input type="hidden" name="pid" value="{{$data->pid}}" >
 
 					<div class="col-sm-9">
 						<div class="form-group">

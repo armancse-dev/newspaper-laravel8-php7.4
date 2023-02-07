@@ -92,26 +92,16 @@
         </div>
         <div class="col-md-6">
             <div class="row">
-              <ul class="nav">
-                @foreach ($categories as $key=>$cat)
-                @if ($key < 4)
-                <li><a href="{{url('category')}}/{{$cat->slug}}" class="text-uppercase">{{$cat->title}}</a></li>
-                @endif
-                @endforeach
-            </ul>
+                <ul class="nav">
+                    @foreach ($pages as $page)
+                    @if ($key < 4)
+                    <li><a href="{{url('page')}}/{{$page->slug}}" class="text-uppercase">{{$page->title}}</a></li>
+                    @endif
+                    @endforeach
+                </ul>
             </div>
         </div>
-        <div class="col-md-6">
-            <div class="row">
-              <ul class="nav">
-                @foreach ($categories as $key=> $cat)
-                @if ($key > 3)
-                <li><a href="{{url('category')}}/{{$cat->slug}}" class="text-uppercase">{{$cat->title}}</a></li>
-                @endif
-                @endforeach
-            </ul>
-            </div>
-        </div>
+
     </div>
     <div class="col-md-4">
         <h3 style="border-bottom:2px solid #ccc;"><span style="border-bottom:2px solid #f00;">Contact Us</span></h3>

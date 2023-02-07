@@ -16,7 +16,7 @@
     </div>
     <div class="search-div">
       <div class="col-sm-9">
-        All({{$allpages}}) | <a href="#">Published ({{$published}})</a>
+        All({{$allposts}}) | <a href="#">Published ({{$published}})</a>
       </div>
 
       <div class="col-sm-3">
@@ -46,7 +46,7 @@
             </div>
 
             <div class="col-sm-3 text-right">
-                {{-- {{ $pages->links() }} --}}
+                {{-- {{ $posts->links() }} --}}
             </div>
         </div>
     </form>
@@ -63,12 +63,12 @@
             </tr>
           </thead>
           <tbody>
-            @if (count($pages) > 0)
-            @foreach ( $pages as $post)
+            @if (count($posts) > 0)
+            @foreach ( $posts as $post)
             <tr>
                 <td>
                   <input type="checkbox" name="select-data[]" value="{{$post->pageid}}">
-                  <a href="{{url('editpost')}}/{{$post->pageid}}">{{$post->title}}</a>
+                  <a href="{{url('editpage')}}/{{$post->pageid}}">{{$post->title}}</a>
                 </td>
 
                 <td>{{$post->status}}</td>
@@ -84,13 +84,6 @@
       </div>
     </div>
 
-    <div class="clearfix"></div>
-
-    <div class="filter-div">
-      <div class="col-sm-12 text-right">
-        {{-- {{ $pages->links() }} --}}
-      </div>
-    </div>
   </div>
 </div>
 

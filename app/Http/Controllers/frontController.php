@@ -21,11 +21,13 @@ class frontController extends Controller
             $icons = [];
         }
         $lastnews = DB::table('posts')->where('status','publish')->orderby('pid','DESC')->first();
+        $pages = DB::table('pages')->where('status', 'publish')->get();
         view()->share([
             'categories' => $categories,
             'setting' => $setting,
             'icons' => $icons,
             'lastnews' => $lastnews,
+            'pages' => $pages,
         ]);
     }
     public function index(){
@@ -62,6 +64,11 @@ class frontController extends Controller
         $related = DB::table('posts')->where('category_id','LIKE', '%'.$category.'%')->get();
         $letest = DB:: table('posts')->where('status','publish')->orderby('pid','DESC')->get();
         return view ('frontend.article',['data'=>$data, 'related'=>$related,'letest'=>$letest]);
+    }
+
+    public function page($slug){
+        $data = DB::table('pages')->where('slug', $slug)->first();
+        return view('frontend.page',['data'=>$data]);
     }
 
     public function searchContent(){
