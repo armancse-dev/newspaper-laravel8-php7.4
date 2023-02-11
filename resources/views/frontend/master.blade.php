@@ -98,6 +98,7 @@
                     <li><a href="{{url('page')}}/{{$page->slug}}" class="text-uppercase">{{$page->title}}</a></li>
                     @endif
                     @endforeach
+                    <li><a class="text-uppercase" href="{{url('contact-us')}}">Contact Us</a></li>
                 </ul>
             </div>
         </div>

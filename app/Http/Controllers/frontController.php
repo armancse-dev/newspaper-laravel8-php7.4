@@ -68,7 +68,13 @@ class frontController extends Controller
 
     public function page($slug){
         $data = DB::table('pages')->where('slug', $slug)->first();
-        return view('frontend.page',['data'=>$data]);
+        $letest = DB:: table('posts')->where('status','publish')->orderby('pid','DESC')->get();
+        return view('frontend.page',['data'=>$data,'letest'=>$letest]);
+    }
+
+    public function contactUs(){
+        $letest = DB:: table('posts')->where('status','publish')->orderby('pid','DESC')->get();
+        return view('frontend.contact',['letest'=>$letest]);
     }
 
     public function searchContent(){

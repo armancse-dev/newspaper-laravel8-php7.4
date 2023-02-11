@@ -108,4 +108,9 @@ class adminController extends Controller
         return view('backend.pages.edit', ['data'=>$data]);
 
     }
+
+    public function messages(){
+        $data = DB::table('messages')->orderby('mid', 'DESC')->paginate(20);
+        return view('backend.messages', ['data'=>$data]);
+    }
 }

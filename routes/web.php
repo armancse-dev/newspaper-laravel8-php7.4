@@ -22,6 +22,8 @@ Route::get('article/{slug}', [frontController::class, 'article']);
 Route::get('category/{slug}', [frontController::class, 'category']);
 Route::get('post', [frontController::class, 'post']);
 Route::get('page/{slug}', [frontController::class, 'page']);
+Route::get('contact-us', [frontController::class, 'contactUs']);
+Route::POST('sendmessage', [crudController::class, 'insertData']);
 
 //admin
 Route::get('admin', [adminController::class, 'index']);
@@ -56,3 +58,6 @@ Route::POST('addpage', [crudController::class, 'insertData']);
 Route::get('all-pages', [adminController::class, 'allPages']);
 Route::get('editpage/{id}', [adminController::class, 'editPage']);
 Route::POST('updatepage/{id}', [crudController::class, 'updateData']);
+
+//Messages
+Route::get('messages', [adminController::class, 'messages']);
