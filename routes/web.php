@@ -61,3 +61,9 @@ Route::POST('updatepage/{id}', [crudController::class, 'updateData']);
 
 //Messages
 Route::get('messages', [adminController::class, 'messages']);
+
+//Advertisements
+Route::get('add-adv', [adminController::class, 'addAdv']);
+Route::POST('addadv', [crudController::class, 'insertData']);
+Route::get('all-adv', [adminController::class, 'allAdv']);
+Route::get('editadv/{id}', [adminController::class, 'editAdv']);

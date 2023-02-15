@@ -113,4 +113,19 @@ class adminController extends Controller
         $data = DB::table('messages')->orderby('mid', 'DESC')->paginate(20);
         return view('backend.messages', ['data'=>$data]);
     }
+
+    public function addAdv(){
+        return view('backend.advertisement.add-adv');
+    }
+
+    public function allAdv(){
+        $data = DB::table('advertisements')->orderby('aid','DESC')->get();
+        return view('backend.advertisement.all-adv',['data'=>$data]);
+    }
+
+    public function editAdv($id){
+        $data = DB::table('advertisements')->where('aid',$id)->first();
+        return view('backend.advertisement.edit-adv',['data'=>$data]);
+    }
+
 }
