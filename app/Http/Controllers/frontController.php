@@ -22,12 +22,21 @@ class frontController extends Controller
         }
         $lastnews = DB::table('posts')->where('status','publish')->orderby('pid','DESC')->first();
         $pages = DB::table('pages')->where('status', 'publish')->get();
+
+        $leaderboard = DB::table('advertisements')->where('status','display')->where('location','leaderboard')->orderby('aid', 'DESC')->first();
+
+        $sidebarTop = DB::table('advertisements')->where('status','display')->where('location','sidebar-top')->orderby('aid', 'DESC')->first();
+
+        $sidebarBottom = DB::table('advertisements')->where('status','display')->where('location','sidebar-bottom')->orderby('aid', 'DESC')->first();
         view()->share([
             'categories' => $categories,
             'setting' => $setting,
             'icons' => $icons,
             'lastnews' => $lastnews,
             'pages' => $pages,
+            'leaderboard' => $leaderboard,
+            'sidebarTop' => $sidebarTop,
+            'sidebarBottom' => $sidebarBottom,
         ]);
     }
     public function index(){

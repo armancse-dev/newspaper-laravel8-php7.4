@@ -67,3 +67,5 @@ Route::get('add-adv', [adminController::class, 'addAdv']);
 Route::POST('addadv', [crudController::class, 'insertData']);
 Route::get('all-adv', [adminController::class, 'allAdv']);
 Route::get('editadv/{id}', [adminController::class, 'editAdv']);
+
+Route::POST('updateadv/{id}', [crudController::class, 'updateData']);

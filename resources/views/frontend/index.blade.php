@@ -296,6 +296,14 @@
             @endforeach
           </div>
 
+          @if ($sidebarTop)
+            <div class="sidebar-adv">
+                <a href="{{$sidebarTop->url}}">
+                    <img src="{{url('public/advertisements')}}/{{$sidebarTop->image}}" width="100%" alt="{{$sidebarTop->title}}"/>
+                </a>
+            </div>
+          @endif
+
           <div class="col-md-12" style="border:1px solid #ccc; padding:15px 15px 60px 15px; margin-top:30px;">
           	<div class="col-md-12" style="border-bottom:1px solid #ccc; padding:0px 10px 20px 10px; margin-bottom:10px;">
            		<h3 style="border-bottom:3px solid #2b99ca; padding-bottom:5px;"><span style="padding:6px 12px; background:#2b99ca;">Style</span></h3>
@@ -327,7 +335,13 @@
           @endif
           @endforeach
         </div>
-
+        @if ($sidebarBottom)
+            <div class="col-sm-12 sidebar-adv">
+                <a href="{{$sidebarBottom->url}}">
+                    <img src="{{url('public/advertisements')}}/{{$sidebarBottom->image}}" width="100%" alt="{{$sidebarBottom->title}}"/>
+                </a>
+            </div>
+        @endif
       </div>
   </div>
 </div>

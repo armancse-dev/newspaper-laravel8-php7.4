@@ -16,7 +16,7 @@
         </div>
 		<div class="col-sm-12">
 			<div class="row">
-				<form method="post" action="{{url('editadv')}}/{{$data->aid}}" enctype="multipart/form-data">
+				<form method="post" action="{{url('updateadv')}}/{{$data->aid}}" enctype="multipart/form-data">
 					{{ csrf_field() }}
 					<input type="hidden" name="tbl" value="{{encrypt('advertisements')}}" >
 					<input type="hidden" name="aid" value="{{$data->aid}}" >
@@ -35,9 +35,9 @@
 					<div class="forum-group content featured-image">
                         <h4>Advertisement Image <span class="pull-right"><i class="fa fa-chevron-down"></i></span></h4><hr>
                         @if ($data->image != '')
-                        <p><img src="{{url('public/advertisements')}}" id="output" style="max-width: 100%" /></p>
+                        <p><img src="{{url('public/advertisements')}}/{{$data->image}}" id="output" style="max-width: 100%" /></p>
                         <p><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;"></p>
-                        <p><label for="file" style="cursor: pointer;" >Upload Advertisement Image</label></p>
+                        <p><label for="file" style="cursor: pointer;" >Replace Image</label></p>
                         @else
                         <p><img id="output" style="max-width: 100%" /></p>
                         <p><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;"></p>
@@ -47,22 +47,41 @@
                     <div class="form-gorup">
                         <label>Location</label>
                         <select name="location" class="form-control">
+                            <option>{{$data->location}}</option>
+                            @if ($data->location != 'leaderboard')
                             <option>leaderboard</option>
+                            @endif
+
+                            @if ($data->location != 'sidebar')
                             <option>sidebar</option>
+                            @endif
+
+                            @if ($data->location != 'sidebar-top')
                             <option>sidebar-top</option>
+                            @endif
+
+                            @if ($data->location != 'sidebar-bottom')
                             <option>sidebar-bottom</option>
+                            @endif
+
                         </select>
                     </div>
 
                     <div class="form-group">
                         <label>Status</label>
                         <select name="status" class="form-control">
+                            <option>{{$data->status}}</option>
+                            @if ($data->status == 'hide')
                             <option>display</option>
+                            @else
                             <option>hide</option>
+                            @endif
+
+
                         </select>
                     </div>
                     <div class="form-group">
-                        <button class="btn btn-primary">Add Advertisement</button>
+                        <button class="btn btn-primary">Update Advertisement</button>
                     </div>
 				</form>
 			</div>
