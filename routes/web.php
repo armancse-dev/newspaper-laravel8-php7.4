@@ -69,3 +69,7 @@ Route::get('all-adv', [adminController::class, 'allAdv']);
 Route::get('editadv/{id}', [adminController::class, 'editAdv']);
 
 Route::POST('updateadv/{id}', [crudController::class, 'updateData']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

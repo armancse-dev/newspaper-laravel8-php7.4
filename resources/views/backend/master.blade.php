@@ -2,7 +2,9 @@
 <html>
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>ADMIN DASHBOARD | WEBSITE NAME</title>
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+	<title>ADMIN DASHBOARD | WhatsOn Guide</title>
 	<link rel="stylesheet" href="{{url('public/css/bootstrap.min.css')}}">
 	<link rel="stylesheet" href="{{url('public/css/font-awesome.min.css')}}">
 	<link rel="stylesheet" href="{{url('public/css/ionicons.min.css')}}">

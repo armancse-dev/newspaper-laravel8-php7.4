@@ -11,6 +11,9 @@ if(version_compare(PHP_VERSION, '7.4.29', '>=')){
 }
 class adminController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
     public function index(){
         return view ('backend.index');
     }
